@@ -7,6 +7,9 @@ syntax on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set number
+set wildmenu
+set autowrite
 
 filetype off
 
@@ -33,6 +36,9 @@ Plugin 'szw/vim-g'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+Plugin 'lifepillar/vim-mucomplete'
 
 call vundle#end()
 
@@ -64,3 +70,20 @@ endif
 let g:airline_theme = 'simple'
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.branch = '⎇'
+
+" Vim go settings
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet','golint']
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_auto_type_info = 1
+let g:go_list_type = 'quickfix'
+
+" Mucomplete settings
+set completeopt+=menuone
+set completeopt+=noinsert
+let g:mucomplete#enable_auto_at_startup = 1
+set shortmess+=c
+set belloff+=ctrlg
