@@ -8,6 +8,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set number
+set wildmenu
+set autowrite
 
 filetype off
 
@@ -34,6 +36,9 @@ Plugin 'szw/vim-g'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+Plugin 'lifepillar/vim-mucomplete'
 
 call vundle#end()
 
@@ -77,3 +82,28 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
+
+" Vim go settings
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet','golint']
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_auto_type_info = 1
+let g:go_list_type = 'quickfix'
+let g:go_bin_path = $GOPATH."/bin"
+
+" Mucomplete settings
+set completeopt-=preview
+set completeopt+=menuone
+set completeopt+=noinsert
+let g:mucomplete#enable_auto_at_startup = 1
+set shortmess+=c
+set belloff+=ctrlg
+
+let g:mucomplete#can_complete = {
+  \ 'default': {
+  \    'omni': { t -> strlen(&l:omnifunc) > 0 && t =~# '\%(\k\k\|\.\)$' }
+  \    }
+  \  }
