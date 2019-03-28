@@ -62,7 +62,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 1
 
-if !exists('g:aitline_symbols')
+if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 

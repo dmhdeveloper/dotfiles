@@ -10,6 +10,7 @@ set expandtab
 set number
 set wildmenu
 set autowrite
+set nowrap
 
 filetype off
 
@@ -29,16 +30,19 @@ Plugin 'scrooloose/nerdtree'
 " Plugin support "
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
-Plugin 'sheerun/vim-polyglot'
+Plugin 'prettier/vim-prettier', {'do':'yarn install'}
 Plugin 'szw/vim-g'
 Plugin 'tpope/vim-surround'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
-Plugin 'lifepillar/vim-mucomplete'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'deoplete-plugins/deoplete-go'
 
 call vundle#end()
 
@@ -56,30 +60,35 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 1
 
-if !exists('g:aitline_symbols')
+if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
 " Set airline theme
-let g:airline_theme = 'simple'
+let g:airline_theme = 'raven'
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.branch = '⎇'
 
 " Airline settings
 let g:airline#extentions#tabline#enabled = 1
 
+" Settings for vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+
 " old vim-powerline symbols
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
+let g:airline_left_sep = '|'
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = '|'
+let g:airline_right_alt_sep = '|'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
@@ -94,16 +103,16 @@ let g:go_auto_type_info = 1
 let g:go_list_type = 'quickfix'
 let g:go_bin_path = $GOPATH."/bin"
 
-" Mucomplete settings
+" Deoplete settings
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#gocode_binary = $GPATH.'/bin/gocode'
+let g:deoplete#sources#go#source_importer = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patters = {}
+endif
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 set completeopt-=preview
-set completeopt+=menuone
-set completeopt+=noinsert
-let g:mucomplete#enable_auto_at_startup = 1
-set shortmess+=c
-set belloff+=ctrlg
-
-let g:mucomplete#can_complete = {
-  \ 'default': {
-  \    'omni': { t -> strlen(&l:omnifunc) > 0 && t =~# '\%(\k\k\|\.\)$' }
-  \    }
-  \  }
+set completeopt+=noselect
