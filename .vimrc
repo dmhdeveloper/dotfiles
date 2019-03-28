@@ -29,10 +29,10 @@ Plugin 'scrooloose/nerdtree'
 " Plugin support "
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'szw/vim-g'
+Plugin 'prettier/vim-prettier', {'do': 'npm install'}
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -59,7 +59,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 1
 
 if !exists('g:aitline_symbols')
