@@ -39,10 +39,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
-Plugin 'deoplete-plugins/deoplete-go'
+Plugin 'lifepillar/vim-mucomplete'
 
 call vundle#end()
 
@@ -54,6 +51,13 @@ filetype plugin indent on
 command! MakeTags !ctags -R . 
 
 nmap <F6> :NERDTreeToggle<CR>
+nnoremap <leader>b :GoBuild<CR>
+nnoremap <leader>t :GoAlternate<CR>
+nnoremap <leader>c :GoCoverageToggle<CR>
+nnoremap <leader>d :GoDoc<CR>
+nnoremap <leader>ds :GoDescribe<CR>
+nnoremap <leader>gr :GoRun<CR>
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -103,16 +107,9 @@ let g:go_auto_type_info = 1
 let g:go_list_type = 'quickfix'
 let g:go_bin_path = $GOPATH."/bin"
 
-" Deoplete settings
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#use_cache = 1
-let g:deoplete#sources#go#gocode_binary = $GPATH.'/bin/gocode'
-let g:deoplete#sources#go#source_importer = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patters = {}
-endif
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-set completeopt-=preview
-set completeopt+=noselect
+" Mucomplete settings
+set completeopt+=menuone
+set completeopt+=noinsert
+let g:mucomplete#enable_auto_at_startup = 1
+set shortmess+=c
+set belloff+=ctrlg
