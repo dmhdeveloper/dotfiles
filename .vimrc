@@ -11,7 +11,7 @@ set number
 set wildmenu
 set autowrite
 
-filetype off
+filetype plugin on
 
 " Non compatibale with VI "
 set nocompatible
@@ -50,6 +50,7 @@ filetype plugin indent on
 command! MakeTags !ctags -R . 
 
 nmap <F6> :NERDTreeToggle<CR>
+autocmd FileType go nnoremap <buffer> <leader>b :GoBuild<CR>
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -82,6 +83,7 @@ let g:go_auto_type_info = 1
 let g:go_list_type = 'quickfix'
 
 " Mucomplete settings
+set completeopt-=preview
 set completeopt+=menuone
 set completeopt+=noinsert
 let g:mucomplete#enable_auto_at_startup = 1
