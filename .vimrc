@@ -7,9 +7,10 @@ syntax on
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set number
+set relativenumber
 set wildmenu
-set autowrite
+set hidden
+set showtabline=1
 
 filetype plugin on
 
@@ -36,7 +37,7 @@ Plugin 'prettier/vim-prettier', {'do': 'npm install'}
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
+Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 Plugin 'lifepillar/vim-mucomplete'
 
@@ -71,6 +72,9 @@ endif
 let g:airline_theme = 'simple'
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.branch = '⎇'
+
+" Airline settings
+let g:airline#extentions#tabline#enabled = 1
 
 " Vim go settings
 let g:go_metalinter_autosave = 1
