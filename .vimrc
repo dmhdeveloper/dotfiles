@@ -37,7 +37,7 @@ Plugin 'prettier/vim-prettier', {'do': 'npm install'}
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-ctrlspace/vim-ctrlspace'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 Plugin 'lifepillar/vim-mucomplete'
 
@@ -93,3 +93,5 @@ set completeopt+=noinsert
 let g:mucomplete#enable_auto_at_startup = 1
 set shortmess+=c
 set belloff+=ctrlg
+
+let g:omni_sql_no_default_maps = 1
