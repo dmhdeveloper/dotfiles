@@ -26,6 +26,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " File browsing
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 
 " Plugin support "
 Plugin 'vim-syntastic/syntastic'
