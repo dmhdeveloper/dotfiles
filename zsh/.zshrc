@@ -2,6 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=15000
 SAVEHIST=15000
+CASE_SENSITIVE="true"
 setopt appendhistory nomatch notify
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -33,6 +34,7 @@ autoload -Uz compinit
 
 plugins=(
 	docker
+  zsh-autosuggestions
 )
 
 for plugin ($plugins); do
@@ -48,8 +50,6 @@ source ~/dotfiles/zsh/plugins/vimode.plugin.zsh
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Fix for arrow-key searching
-# start typing + [Up-Arrow] - fuzzy find history forward
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
 	autoload -U up-line-or-beginning-search
 	zle -N up-line-or-beginning-search
