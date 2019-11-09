@@ -24,7 +24,7 @@ loop() {
 }
 
 # Custom cd
-chpwd() ls
+chpwd() ls -a
 
 # For vim mappings: 
    stty -ixon
