@@ -1,9 +1,10 @@
 #!/bin/bash
 
 shopt -s nullglob dotglob     # To include hidden files
-files=`ls -a $1`
 DIR=""
-case $files in
+for filename in $(ls -a $1)
+do
+case $filename in
   *.conf) DIR=$DIR" ";;
   *.go) DIR=$DIR" ";;
   *.class) DIR=$DIR" ";;
@@ -11,5 +12,6 @@ case $files in
   *.md) DIR=$DIR" ";;
   *Dockerfile*) DIR=$DIR" ";;
 esac
+done
 
 printf "%s" $DIR
