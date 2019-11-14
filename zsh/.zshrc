@@ -23,18 +23,31 @@ loop() {
   done;
 }
 
+alias ls="ls --color"
+
+la() {
+  ls -a
+}
+
+ll() {
+  ls -l
+}
+
+lla() {
+  ls -la
+}
+
 # Custom cd
-chpwd() ls -a
+chpwd() la
 
 # For vim mappings: 
-   stty -ixon
+stty -ixon
 
 autoload -Uz compinit
 # End of lines added by compinstall
 
 plugins=(
 	docker
-  zsh-autosuggestions
 )
 
 for plugin ($plugins); do
