@@ -76,3 +76,4 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
+source ~/dotfiles/zsh/ls.zsh

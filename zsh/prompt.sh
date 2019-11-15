@@ -2,7 +2,7 @@
 
 autoload -U colors && colors
 
-setopt PROMPT_SUBST
+setopt prompt_subst
 
 set_prompt() {
 

@@ -82,8 +82,8 @@ endif
 
 " Set airline theme
 let g:airline_theme = 'papercolor'
- let g:airline_powerline_fonts = 1
- let g:airline_symbols.branch = '⎇'
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.branch = '⎇'
 
 if has('macunix')
   " old vim-powerline symbols
@@ -96,7 +96,7 @@ if has('macunix')
 endif
 
 " Airline settings
-" let g:airline#extentions#tabline#enabled = 1
+let g:airline#extentions#tabline#enabled = 1
 
 " Vim go settings
 let g:go_metalinter_autosave = 1
@@ -124,3 +124,14 @@ let g:mucomplete#can_complete = {
   \  }
 
 let g:omni_sql_no_default_maps = 1
+
+" colours
+set t_Co=256
+" set vim terminal to 256 colors.
+if filereadable(expand("/usr/share/terminfo/x/xterm-256color")) 
+  let $TERM='xterm-256color'
+else
+  let $TERM='xterm-color'
+endif
+
+hi Comment ctermfg=lightblue
