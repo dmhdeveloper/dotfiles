@@ -23,7 +23,14 @@ loop() {
   done;
 }
 
-alias ls="ls --color"
+case `uname` in
+  Darwin)
+		alias ls="ls -G"
+  ;;
+  Linux)
+		alias ls="ls --color"
+  ;;
+esac
 
 la() {
   ls -a
