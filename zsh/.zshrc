@@ -3,6 +3,8 @@ HISTFILE=~/.histfile
 HISTSIZE=15000
 SAVEHIST=15000
 CASE_SENSITIVE="true"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246"
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
 setopt appendhistory nomatch notify
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -33,15 +35,15 @@ case `uname` in
 esac
 
 la() {
-  ls -a
+  ls -a "$@"
 }
 
 ll() {
-  ls -l
+  ls -l "$@"
 }
 
 lla() {
-  ls -la
+  ls -la "$@"
 }
 
 # Custom cd
@@ -84,3 +86,9 @@ fi
 
 source ~/dotfiles/zsh/prompt.sh
 source ~/dotfiles/zsh/ls.zsh
+
+if [[ "$TERM" == "xterm" ]]; then
+  export TERM=xterm-256color
+elif [[ "$TERM" == "screen" ]]; then
+  export TERM=screen-256color
+fi
