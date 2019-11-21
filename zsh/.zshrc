@@ -92,3 +92,5 @@ if [[ "$TERM" == "xterm" ]]; then
 elif [[ "$TERM" == "screen" ]]; then
   export TERM=screen-256color
 fi
+
+ZSH_HIGHLIGHT_STYLES[path]=none
