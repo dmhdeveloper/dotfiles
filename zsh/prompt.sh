@@ -16,12 +16,14 @@ set_prompt() {
 	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
 
  	# Git
- 	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
+ 	if [ -d .git ];then
  		PS1+=', '
- 		PS1+="%F{208}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
-		STATUS=$(git status --short | wc -l)
-		if [ $STATUS -gt 0 ]; then 
- 			PS1+="%{$fg[red]%}+$(echo $STATUS | awk '{$1=$1};1')%{$reset_color%}"
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+ 		PS1+="%F{208}$BRANCH%{$reset_color%}"
+		STATUS=$(git status --short)
+		if [ ! -z $STATUS ]; then 
+ 		  PS1+=', '
+ 			PS1+="%{$fg[red]%} %{$reset_color%}"
  		fi
  	fi
 
