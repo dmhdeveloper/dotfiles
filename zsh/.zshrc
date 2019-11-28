@@ -28,12 +28,17 @@ loop() {
 case `uname` in
   Darwin)
 		alias ls="ls -G"
+    PATH="Library/Python/3.7/bin:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
+    POWERLINE_CONFIG_COMMAND=powerline-config
+    export POWERLINE_CONFIG_COMMAND
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
   ;;
   Linux)
 		alias ls="ls --color"
   ;;
 esac
-
 la() {
   ls -a "$@"
 }
