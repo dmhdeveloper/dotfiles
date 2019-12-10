@@ -2,6 +2,9 @@
 HISTFILE=~/.histfile
 HISTSIZE=15000
 SAVEHIST=15000
+CASE_SENSITIVE="true"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246"
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
 setopt appendhistory nomatch notify
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -9,6 +12,9 @@ zstyle :compinstall filename '/home/dev/.zshrc'
 
 # Functions
 # Loop a command and show the output in vim
+
+# Set environment variables
+source ~/.environment
 
 loop() {
   echo ":cq to quit\n" > /tmp/log/output 
@@ -22,11 +28,32 @@ loop() {
   done;
 }
 
+case `uname` in
+  Darwin)
+		alias ls="ls -G"
+  ;;
+  Linux)
+		alias ls="ls --color"
+  ;;
+esac
+
+la() {
+  ls -a "$@"
+}
+
+ll() {
+  ls -l "$@"
+}
+
+lla() {
+  ls -la "$@"
+}
+
 # Custom cd
-chpwd() ls
+chpwd() la
 
 # For vim mappings: 
-   stty -ixon
+stty -ixon
 
 autoload -Uz compinit
 # End of lines added by compinstall
@@ -48,8 +75,6 @@ source ~/dotfiles/zsh/plugins/vimode.plugin.zsh
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Fix for arrow-key searching
-# start typing + [Up-Arrow] - fuzzy find history forward
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
 	autoload -U up-line-or-beginning-search
 	zle -N up-line-or-beginning-search
@@ -63,3 +88,12 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
+source ~/dotfiles/zsh/ls.zsh
+
+if [[ "$TERM" == "xterm" ]]; then
+  export TERM=xterm-256color
+elif [[ "$TERM" == "screen" ]]; then
+  export TERM=screen-256color
+fi
+
+ZSH_HIGHLIGHT_STYLES[path]=none

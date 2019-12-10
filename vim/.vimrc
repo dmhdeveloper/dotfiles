@@ -7,12 +7,16 @@ syntax on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+set guifont=SauceCodePro\ Nerd\ Font:h15:cANSI
+
+" Show line numbers
 set number
 set wildmenu
-set autowrite
-set nowrap
+set hidden
+set showtabline=1
 
-filetype off
+filetype plugin on
 
 " Non compatibale with VI "
 set nocompatible
@@ -26,20 +30,23 @@ Plugin 'gmarik/Vundle.vim'
 
 " File browsing
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 
 " Plugin support "
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
-Plugin 'prettier/vim-prettier', {'do':'yarn install'}
-Plugin 'szw/vim-g'
-Plugin 'tpope/vim-surround'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
+Plugin 'szw/vim-g'
+Plugin 'prettier/vim-prettier', {'do': 'npm install'}
+Plugin 'tpope/vim-surround'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 Plugin 'lifepillar/vim-mucomplete'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dmhdeveloper/ocean.vim'
 
 call vundle#end()
 
@@ -51,18 +58,12 @@ filetype plugin indent on
 command! MakeTags !ctags -R . 
 
 nmap <F6> :NERDTreeToggle<CR>
-nnoremap <leader>b :GoBuild<CR>
-nnoremap <leader>t :GoAlternate<CR>
-nnoremap <leader>c :GoCoverageToggle<CR>
-nnoremap <leader>d :GoDoc<CR>
-nnoremap <leader>ds :GoDescribe<CR>
-nnoremap <leader>gr :GoRun<CR>
+let NERDTreeShowHidden=1
 
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 " let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
@@ -70,30 +71,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_w = 1
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" Set airline theme
-let g:airline_theme = 'raven'
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.branch = '⎇'
-
-" Airline settings
-let g:airline#extentions#tabline#enabled = 1
-
 " Settings for vim-javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
-
-" old vim-powerline symbols
-let g:airline_left_sep = '|'
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = '|'
-let g:airline_right_alt_sep = '|'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
 
 " Vim go settings
 let g:go_metalinter_autosave = 1
@@ -104,7 +85,20 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_auto_type_info = 1
 let g:go_list_type = 'quickfix'
-let g:go_bin_path = $GOPATH."/bin"
+
+" vim-go shortcuts
+autocmd FileType go nnoremap <buffer> <leader>b :GoBuild<CR>
+autocmd FileType go nnoremap <buffer> <leader>t :GoAlternate<CR>
+autocmd FileType go nnoremap <buffer> <leader>c :GoCoverageToggle<CR>
+autocmd FileType go nnoremap <buffer> <leader>d :GoDoc<CR>
+autocmd FileType go nnoremap <buffer> <leader>ds :GoDescribe<CR>
+autocmd FileType go nnoremap <buffer> <leader>gr :GoRun<CR>
+
+" Vim airline & themes
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme='ocean'
+let g:airline_powerline_fonts = 1
 
 " Mucomplete settings
 set completeopt-=preview
@@ -119,3 +113,15 @@ let g:mucomplete#can_complete = {
   \    'omni': { t -> strlen(&l:omnifunc) > 0 && t =~# '\%(\k\k\|\.\)$' }
   \    }
   \  }
+
+let g:omni_sql_no_default_maps = 1
+
+" colours
+set t_Co=256
+" set vim terminal to 256 colors.
+if filereadable(expand("/usr/share/terminfo/x/xterm-256color")) 
+  let $TERM='xterm-256color'
+else
+  let $TERM='xterm-color'
+endif
+colorscheme ocean
