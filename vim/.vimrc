@@ -46,6 +46,7 @@ Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 Plugin 'lifepillar/vim-mucomplete'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dmhdeveloper/ocean.vim'
 
 call vundle#end()
 
@@ -96,7 +97,7 @@ autocmd FileType go nnoremap <buffer> <leader>gr :GoRun<CR>
 " Vim airline & themes
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='minimalist'
+let g:airline_theme='ocean'
 let g:airline_powerline_fonts = 1
 
 " Mucomplete settings
@@ -123,5 +124,4 @@ if filereadable(expand("/usr/share/terminfo/x/xterm-256color"))
 else
   let $TERM='xterm-color'
 endif
-colorscheme iceberg
-hi Comment ctermfg=lightblue
+colorscheme ocean
