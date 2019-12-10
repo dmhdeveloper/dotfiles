@@ -6,9 +6,6 @@ CASE_SENSITIVE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246"
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 setopt appendhistory nomatch notify
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/dev/.zshrc'
 
 # Functions
 # Loop a command and show the output in vim
