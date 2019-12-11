@@ -1,6 +1,6 @@
-" VIM CONFIG "
+" VIM CONFIG
 
-" Syntax Highlighting "
+" Syntax Highlighting
 syntax on
 
 " Change tab length
@@ -18,7 +18,7 @@ set showtabline=1
 
 filetype plugin on
 
-" Non compatibale with VI "
+" Non compatibale with VI
 set nocompatible
 
 " Set the runtime path to include Vundle and initialise
@@ -32,7 +32,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 
-" Plugin support "
+" Plugin support
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
@@ -40,7 +40,6 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'szw/vim-g'
 Plugin 'prettier/vim-prettier', {'do': 'npm install'}
 Plugin 'tpope/vim-surround'
-Plugin 'cocopon/iceberg.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 Plugin 'lifepillar/vim-mucomplete'
@@ -55,8 +54,6 @@ filetype plugin indent on
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
 
-command! MakeTags !ctags -R . 
-
 nmap <F6> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
@@ -64,7 +61,6 @@ let NERDTreeShowHidden=1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
