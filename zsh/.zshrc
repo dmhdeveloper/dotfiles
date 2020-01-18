@@ -46,6 +46,8 @@ lla() {
   ls -la "$@"
 }
 
+alias docker='sudo docker'
+
 # Custom cd
 chpwd() la
 
