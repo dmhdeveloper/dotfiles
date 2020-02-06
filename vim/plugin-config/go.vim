@@ -23,12 +23,3 @@ let g:go_list_type = 'quickfix'
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-
-" Set go guru scope to root of project and ignore vendor directory
-functio! s:go_guru_scope_from_git_root()
-	let gitroot = system("git rev-parse --show-toplevel | tr -d '\n'")
-	let pattern = escape(go#util#gopath() . "/src/", '\ /')
-	return substitute(gitroot, pattern, "", "") . "/... -vendor/"
-endfunction
-
-au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
