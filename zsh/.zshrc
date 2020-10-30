@@ -1,3 +1,6 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=15000
@@ -24,6 +27,25 @@ loop() {
     rm -rf /tmp/log/output
   done;
 }
+
+lg(){
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+    lazygit "$@"
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
+
+ide()(
+  PWD=`pwd`
+  tmux splitw -p 35
+  cd ${PWD}
+  tmux splitw -h
+  cd ${PWD}
+  tmux selectp -U
+  vim
+)
 
 case `uname` in
   Darwin)
