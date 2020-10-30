@@ -1,0 +1,67 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "trace.server": "verbose",
+      "filetypes": [
+        "go"
+      ]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": [
+        "dockerfile"
+      ],
+      "args": [
+        "--stdio"
+      ]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
+    },
+    "sql": {
+      "command": "sql-language-server",
+      "args": [
+        "up",
+        "--method",
+        "stdio"
+      ],
+      "filetypes": [
+        "sql",
+        "mysql"
+      ]
+    },
+    "groovy": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "~/dotfiles/vim/plugged/groovy-language-server/build/libs/groovy-language-server-all.jar"
+      ],
+      "filetypes": [
+        "groovy"
+      ]
+    },
+    "kotlin": {
+      "command": "~/dotfiles/vim/plugged/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+      "filetypes": [
+        "kotlin"
+      ]
+    }
+  },
+  "json.format.enable": true,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true
+}
