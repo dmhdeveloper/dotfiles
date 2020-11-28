@@ -36,7 +36,9 @@ Plug 'scrooloose/nerdcommenter'
 " Syntax checker :help syntastic-checkers
 Plug 'vim-syntastic/syntastic'
 " Formatting of golang files using gofmt :GoFmt
-Plug 'darrikonn/vim-gofmt', {'do': 'GoInstallBinaries'}
+Plug 'darrikonn/vim-gofmt'
+" Formatting
+Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Quote pairs for surrounding words with quotes, parens etc.
