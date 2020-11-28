@@ -29,7 +29,7 @@ _NOTE_: A restart may be required.
 The chosen package manager for vim is [Vim Plug][8]. You must install this manually first.
 Follow the instructions on the `README.md` of the [Vim Plug][8] repo.
 
-[Vim Plug][8] uses commands to build certain language server binaries which is why it installed
+[Vim Plug][8] uses commands to build certain language server binaries which is why it is
 important that you install Java, Go, Node, Yarn, Maven and Gradle before attempting to
 execute `:PlugInstall`
 
