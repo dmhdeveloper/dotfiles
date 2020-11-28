@@ -14,7 +14,7 @@ setopt appendhistory nomatch notify
 # Loop a command and show the output in vim
 
 # Set environment variables
-source ~/.environment
+source ~/.environmentrc
 
 loop() {
   echo ":cq to quit\n" > /tmp/log/output 
