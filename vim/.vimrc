@@ -8,7 +8,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set guifont=SauceCodePro\ Nerd\ Font:h15:cANSI
+set guifont=Source\ Code\ Pro\ Semibold:h15:cANSI
 
 " Show line numbers
 set number
@@ -87,3 +87,5 @@ endif
 colorscheme ocean
 
 highlight Pmenu ctermfg=15 ctermbg=16 guifg=#ffffff guibg=#0000ff
+
+let g:coc_config_home="$HOME/dotfiles/.vim"
