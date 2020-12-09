@@ -1,7 +1,9 @@
-set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin $M2_HOME/bin /Applications/VMware Fusion.app/Contents/Public /opt/X11/bin /Library/Apple/usr/bin /Applications/Wireshark.app/Contents/MacOS /Users/dmh/.nvm/versions/node/v12.16.1/bin /Users/dmh/Development/Maven/apache-maven-3.6.0/bin /usr/local/lib usr/lib /usr/local/include /Users/dmh/Library/Android/sdk /Users/dmh/Library/Android/sdk/bin /Users/dmh/Library/Android/sdk/emulator /Users/dmh/Library/Android/sdk/tools /Users/dmh/Library/Android/sdk/tools/bin /Users/dmh/Library/Android/sdk/platform-tools /usr/local/lib/ruby/gems/2.6.0/bin /Users/dmh/Development/Protobuf/protoc-3.13.0-osx-x86_64/bin /Users/dmh/Development/workspace/go /Users/dmh/Development/workspace/go/bin /Users/dmh/Development/Gradle/gradle-5.4.1/bin /Users/dmh/Development/Apache/apache-cxf-3.3.2/bin /emulator /tools
+# Environment specific config that you do not want exposed on gitlab
+source ~/.environmentrc
 
 # Shell prompt
 function fish_prompt
+  # Directory
   set_color -o white; echo -n "["
   if test "$PWD" != "$HOME"
     set_color 00D7FF; echo -n (basename $PWD)
@@ -22,13 +24,13 @@ function fish_prompt
  	  end
  	end
 
+  # Sudo
+	set CAN_I_RUN_SUDO (sudo -n uptime 2>&1|grep "load"|wc -l)
+	if test $CAN_I_RUN_SUDO -eq 1
+	  set_color white; echo -n ", "
+	  set_color red; echo -n " "
+	end
   set_color -o white; echo -n "]: " 
-
-	# set CAN_I_RUN_SUDO (sudo -n uptime 2>&1|grep "load"|wc -l)
-	# if test $CAN_I_RUN_SUDO > 0
-	# 	set -x PS1 $PS1 ', '
-	# 	set -x PS1 $PS1 "(set_color red) "
-	# end
 
 end
 

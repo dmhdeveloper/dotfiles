@@ -9,7 +9,7 @@
 - [Maven][5]
 - [Gradle][6]
 - [Vim][7]
-- [ZSH][9]
+- [Fish][9]
 - [Tmux][10]
 
 ## Install
@@ -29,22 +29,27 @@ _NOTE_: A restart may be required.
 The chosen package manager for vim is [Vim Plug][8]. You must install this manually first.
 Follow the instructions on the `README.md` of the [Vim Plug][8] repo.
 
+Execute the command below to source the config in this project.
+
+```bash
+echo "source ~/dotfiles/vim/.vimrc" > ~/.vimrc
+```
+
 [Vim Plug][8] uses commands to build certain language server binaries which is why it is
 important that you install Java, Go, Node, Yarn, Maven and Gradle before attempting to
 execute `:PlugInstall`
 
-### ZSH
+Execute the command below to source the config in this project.
 
-ZSH is the chosen shell for this setup.
-A few plugins are installed by adding submodules to this repo and then
-referencing those plugins.
-So to enable those plugins:
+### Fish
+
+Fish is the chosen shell for this setup.
+To install, navigate to your current OS/Distribution [here][9].
+
+Execute the command below to source the config in this project.
 
 ```bash
-# In the dotfiles directory
-git submodule init
-
-git submodule update
+echo "source ~/dotfiles/fish/config.fish" > ~/.config/fish/config.fish`
 ```
 
 ### Tmux
@@ -60,5 +65,5 @@ in scripts so there shouldn't be any changes or dependencies required.
 [6]: https://gradle.org/
 [7]: https://www.vim.org/
 [8]: https://github.com/junegunn/vim-plug
-[9]: https://www.zsh.org/
+[9]: https://fishshell.com/
 [10]: https://github.com/tmux/tmux/wiki
